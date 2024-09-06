@@ -1,0 +1,73 @@
+\chapter*{Bits and Algebra}
+\begin{definition}
+    [Sign Extension]
+    When you extend the sign bit to the left to fill in the rest of the bits.
+\end{definition}
+
+\begin{example}
+    \begin{align*}
+          & 0000\,0011 (8b)                  \\
+        + & \textcolor{red}{1111}\,1111 (4b) \\
+        \hline                               \\
+    \end{align*}
+    In this case, the leftmost bit, the sign bit, of $1111$ is extend
+\end{example}
+
+\begin{definition}
+    [Hexadecimal]
+    A base-16 number system. \\
+    $0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F$
+\end{definition}
+
+\section{Floats in C}
+\begin{itemize}
+    \item \texttt{float} is 32 bits
+    \item \texttt{double} is 64 bits
+    \item \texttt{FP16/BFloat16} is 16 bits (Not default in C)
+\end{itemize}
+
+\begin{definition}
+    [Floating Point Standard]
+    A certain number of bits are used to represent the mantissa (fraction) and the exponent (distance from least significant bit) of a number. \\
+\end{definition}
+
+\begin{example}
+    [Converting Binary Integers to Float]
+    \begin{align*}
+        1110\,0001\,.1000 &                                                \\
+        \text{Sign}       & = 1                                            \\
+        \text{Mantissa}   & = 1110                                         \\
+        1110\,0001\,.1000 & \approx 1110\times 2^4 \to \text{Exponent} = 4
+    \end{align*}
+    \begin{align*}
+        0000.\,0001\,1101\,1001                                                      \\
+        \text{Sign} = 0                                                              \\
+        \text{Mantissa} = 1110                                                       \\
+        0000.\,0001\,1101\,1001 & \approx 1110\times 2^{-7} \to \text{Exponent} = -7 \\
+    \end{align*}
+
+\end{example}
+
+\begin{definition}
+    [IEEE 754]
+    A standard for floating point numbers. \\
+    \begin{itemize}
+        \item 1 bit for sign
+        \item 8 bits for exponent
+        \item 23 bits for mantissa
+    \end{itemize}
+\end{definition}
+
+\begin{theorem}
+    [IEEE 754]
+    \begin{align*}
+        \text{Value} & = (-1)^{\text{Sign}} \times 1.\text{Mantissa} \times 2^{\text{Exponent} - 128}
+    \end{align*}
+\end{theorem}
+
+\begin{example}
+    [IEEE 754 Example]
+    \begin{align*}
+        0\,0111\,1111\,1100\,0000\,0000\,0000\,0000 \\
+    \end{align*}
+\end{example}
